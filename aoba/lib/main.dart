@@ -12,6 +12,7 @@ class Inicio extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xFF304FFE),
+        scaffoldBackgroundColor: Color(0xFFE4E7E8),
       ),
       home: ProdutoView(),
     );
