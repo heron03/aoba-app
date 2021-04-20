@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProdutoView extends StatefulWidget {
+  final String nome;
+  final String valor;
+  final String descricao;
+
+  const ProdutoView(this.nome, this.valor, this.descricao) : super();
+
   @override
   _ProdutoViewState createState() => _ProdutoViewState();
 }
@@ -10,6 +16,30 @@ class ProdutoView extends StatefulWidget {
 class _ProdutoViewState extends State<ProdutoView> {
   @override
   Widget build(BuildContext context) {
+    final double fonteTitulo = 30.0;
+
+    retornaTexto(texto, tamanhoFonte, {pesoNegrito, corFonte}) {
+      return Text(
+        texto,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: tamanhoFonte,
+          fontWeight: pesoNegrito == null ? FontWeight.bold : pesoNegrito,
+          color: corFonte == null ? Colors.black : corFonte,
+        ),
+      );
+    }
+
+    retornaImagem(imagem, altura) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.network(
+          imagem,
+          height: altura,
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -24,41 +54,17 @@ class _ProdutoViewState extends State<ProdutoView> {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              Text(
-                'Cyberpunk 2077 - Edição Padrão - PlayStation4',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              retornaTexto(
+                  widget.nome, fonteTitulo),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png',
-                      height: 250,
-                    ),
-                  ),
+                  retornaImagem('https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png', 250.0),
                   Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.network(
-                          'https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png',
-                          height: 118,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.network(
-                          'https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png',
-                          height: 118,
-                        ),
-                      ),
+                      retornaImagem('https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png', 118.0),
+                      retornaImagem('https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png', 118.0),
                     ],
                   ),
                 ],
@@ -69,14 +75,8 @@ class _ProdutoViewState extends State<ProdutoView> {
                   children: [
                     Expanded(
                       flex: 4,
-                      child: Text(
-                        'Descrição',
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 22.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: retornaTexto('Descrição', 22.0,
+                          corFonte: Colors.grey[600]),
                     ),
                     Expanded(
                       flex: 6,
@@ -96,13 +96,13 @@ class _ProdutoViewState extends State<ProdutoView> {
               ),
               Text.rich(
                 TextSpan(
-                  text: 'Loren ipsun Loren ipsun Loren ipsun\n\n',
+                  text: '${widget.descricao}\n\n',
                   style: TextStyle(
                     fontSize: 20.0,
                   ),
                   children: [
                     TextSpan(
-                      text: 'R\$ 99,00\n',
+                      text: '${widget.valor}\n',
                       style: TextStyle(
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
@@ -126,14 +126,7 @@ class _ProdutoViewState extends State<ProdutoView> {
                       flex: 5,
                       child: OutlinedButton(
                         onPressed: () {},
-                        child: Text(
-                          'Adicionar ao Carrinho',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        child: retornaTexto('Adicionar ao Carrinho', 15.0),
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.white),
@@ -150,14 +143,7 @@ class _ProdutoViewState extends State<ProdutoView> {
                       flex: 5,
                       child: OutlinedButton(
                         onPressed: () {},
-                        child: Text(
-                          'Comprar',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        child: retornaTexto('Comprar', 15.0, corFonte: Colors.white),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                               Color(0xFF7924FF)),
