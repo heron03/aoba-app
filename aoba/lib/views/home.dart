@@ -76,6 +76,28 @@ class Home extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Color(0xFF304FFE),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(.60),
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+        items: [
+          BottomNavigationBarItem(
+            label: 'Início',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Carrinho',
+            icon: Icon(Icons.shopping_cart),
+          ),
+          BottomNavigationBarItem(
+            label: 'Usuário',
+            icon: Icon(Icons.person),
+          ),
+        ],
+      ),
     );
   }
 }
