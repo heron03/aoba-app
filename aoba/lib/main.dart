@@ -1,4 +1,4 @@
-import 'package:aoba/views/produto_view.dart';
+import 'package:aoba/views/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,11 +14,7 @@ class Inicio extends StatelessWidget {
         primaryColor: Color(0xFF304FFE),
         scaffoldBackgroundColor: Color(0xFFE4E7E8),
       ),
-      home: ProdutoView(
-        'Cyberpunk 2020 - Edição Padrão - PlayStation4',
-        'R\$ 99,00',
-        'Loren ipsun Loren ipsun Loren ipsun',
-      ),
+      home: Home(),
     );
   }
 }

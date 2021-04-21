@@ -1,13 +1,12 @@
 import 'dart:ui';
+import 'package:aoba/model/produto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProdutoView extends StatefulWidget {
-  final String nome;
-  final String valor;
-  final String descricao;
+  final Produto produto;
 
-  const ProdutoView(this.nome, this.valor, this.descricao) : super();
+  const ProdutoView(this.produto) : super();
 
   @override
   _ProdutoViewState createState() => _ProdutoViewState();
@@ -54,17 +53,22 @@ class _ProdutoViewState extends State<ProdutoView> {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              retornaTexto(
-                  widget.nome, fonteTitulo),
+              retornaTexto(widget.produto.nome, fonteTitulo),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  retornaImagem('https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png', 250.0),
+                  retornaImagem(
+                      'https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png',
+                      250.0),
                   Column(
                     children: [
-                      retornaImagem('https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png', 118.0),
-                      retornaImagem('https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png', 118.0),
+                      retornaImagem(
+                          'https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png',
+                          118.0),
+                      retornaImagem(
+                          'https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png',
+                          118.0),
                     ],
                   ),
                 ],
@@ -96,13 +100,13 @@ class _ProdutoViewState extends State<ProdutoView> {
               ),
               Text.rich(
                 TextSpan(
-                  text: '${widget.descricao}\n\n',
+                  text: '${widget.produto.descricao}\n\n',
                   style: TextStyle(
                     fontSize: 20.0,
                   ),
                   children: [
                     TextSpan(
-                      text: '${widget.valor}\n',
+                      text: '${widget.produto.valor}\n',
                       style: TextStyle(
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
@@ -143,7 +147,8 @@ class _ProdutoViewState extends State<ProdutoView> {
                       flex: 5,
                       child: OutlinedButton(
                         onPressed: () {},
-                        child: retornaTexto('Comprar', 15.0, corFonte: Colors.white),
+                        child: retornaTexto('Comprar', 15.0,
+                            corFonte: Colors.white),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                               Color(0xFF7924FF)),
