@@ -1,4 +1,5 @@
 import 'package:aoba/model/loja.dart';
+import 'package:aoba/views/components/data_search.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -13,9 +14,20 @@ class Home extends StatelessWidget {
       Loja("Cirandinha Calçados", "valor", "https://scontent.fmii1-1.fna.fbcdn.net/v/t1.18169-9/15036573_671766852977881_8142848724768959007_n.png?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=VclQ3dzzfYMAX9yD_05&_nc_ht=scontent.fmii1-1.fna&oh=3a1d2687786608debe77ee8a87762c9f&oe=60A4CD0A"),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lojas'),
-      ),
+        appBar: AppBar(
+          title: Text("Buscar Lojas"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: DataSearch(listaDeLojas),
+                );
+              },
+            ),
+          ],
+        ),
       body: ListView.separated(
         itemCount: listaDeLojas.length,
         separatorBuilder: (context, index) {
