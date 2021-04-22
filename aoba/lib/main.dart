@@ -1,4 +1,5 @@
 import 'package:aoba/views/home.dart';
+import 'package:aoba/views/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class Inicio extends StatelessWidget {
         primaryColor: Color(0xFF304FFE),
         scaffoldBackgroundColor: Color(0xFFE4E7E8),
       ),
-      home: Home(),
+      home: LoginWidget(),
     );
   }
 }
